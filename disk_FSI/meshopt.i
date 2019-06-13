@@ -1,7 +1,7 @@
 [MultiApps]
   [structure]
     type = TransientMultiApp
-    app_type = PFFractureApp
+    app_type = fsiplaygroundApp
     positions = '0.0 0.0 0.0'
     input_files = structure.i
     execute_on = 'timestep_begin'
@@ -10,7 +10,7 @@
   []
   [fluid]
     type = TransientMultiApp
-    app_type = PFFractureApp
+    app_type = fsiplaygroundApp
     positions = '0.0 0.0 0.0'
     input_files = fluid.i
     execute_on = 'timestep_end'

@@ -21,7 +21,7 @@ FSIFluidTraction::FSIFluidTraction(const InputParameters & parameters)
     _grad_vel(coupledGradient("vel")),
     _component(getParam<unsigned int>("component")),
     _mu(getMaterialProperty<Real>("mu_name")),
-    _normals(_var.normals())
+    _normals(_assembly.normals())
 {
   if (_mesh.dimension() == 3 && !isParamValid("vel_z"))
     mooseError("missing z component of the velocity");
