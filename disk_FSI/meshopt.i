@@ -41,7 +41,7 @@
     multi_app = fluid
     source_variable = disp_x
     variable = disp_x
-    execute_on = 'timestep_end'
+    execute_on = 'timestep_begin'
   []
   [to_disp_y]
     type = MultiAppCopyTransfer
@@ -49,7 +49,7 @@
     multi_app = fluid
     source_variable = disp_y
     variable = disp_y
-    execute_on = 'timestep_end'
+    execute_on = 'timestep_begin'
   []
 
   [from_tau_x]
@@ -191,7 +191,7 @@
   petsc_options_iname = '-ksp_type -pc_type -pc_factor_mat_solver_package'
   petsc_options_value = 'preonly   lu       superlu_dist'
 
-  nl_rel_tol = 1e-6
+  nl_abs_tol = 1e-6
   nl_max_its = 30
   l_tol = 1e-6
   l_max_its = 300
