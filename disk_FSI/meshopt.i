@@ -14,6 +14,7 @@
     positions = '0.0 0.0 0.0'
     input_files = fluid.i
     execute_on = 'timestep_end'
+    catch_up = true
   []
 []
 
@@ -201,5 +202,5 @@
 
 [Outputs]
   interval = 1
-  print_linear_residuals = false
+  print_linear_residuals = true
 []

@@ -107,13 +107,13 @@
     use_displaced_mesh = true
   []
   [x_momentum]
-    type = INSMomentumTractionFormALE
+    type = INSMomentumTractionForm
     variable = vel_x
     p = p
     component = 0
   []
   [y_momentum]
-    type = INSMomentumTractionFormALE
+    type = INSMomentumTractionForm
     variable = vel_y
     p = p
     component = 1
@@ -177,7 +177,7 @@
 
   # petsc_options_iname = '-ksp_gmres_restart -pc_type -sub_pc_type -sub_pc_factor_levels'
   # petsc_options_value = '300                bjacobi  ilu          4'
-  nl_rel_tol = 1e-6
+  nl_abs_tol = 1e-6
   nl_max_its = 30
   l_tol = 1e-6
   l_max_its = 300
@@ -185,7 +185,7 @@
 []
 
 [Outputs]
-  print_linear_residuals = false
+  print_linear_residuals = true
   [exodus]
     type = Exodus
     file_base = output/fluid

@@ -29,25 +29,23 @@
 
 [Kernels]
   [inertia_x]
-    type = InertialForceExp
+    type = InertialForce
     variable = disp_x
-    eta = 10
     use_displaced_mesh = true
   []
   [inertia_y]
-    type = InertialForceExp
+    type = InertialForce
     variable = disp_y
-    eta = 10
     use_displaced_mesh = true
   []
   [solid_x]
-    type = StressDivergenceExpTensors
+    type = StressDivergenceTensors
     variable = disp_x
     component = 0
     use_displaced_mesh = true
   []
   [solid_y]
-    type = StressDivergenceExpTensors
+    type = StressDivergenceTensors
     variable = disp_y
     component = 1
     use_displaced_mesh = true
@@ -65,34 +63,34 @@
 
 [BCs]
   [left_xfix]
-    type = DirichletBC
+    type = PresetBC #DirichletBC
     variable = disp_x
     boundary = 'left'
     value = 0
-    use_displaced_mesh = true
   []
   [left_yfix]
-    type = DirichletBC
+    type = PresetBC #DirichletBC
     variable = disp_y
     boundary = 'left'
     value = 0
-    use_displaced_mesh = true
   []
   [traction_x]
     type = CoupledTractionBC
     variable = disp_x
     traction = tau_x
     factor = -1e4
+    # factor = 0
     boundary = 'top bottom right'
-    use_displaced_mesh = true
+    use_displaced_mesh = false #true
   []
   [traction_y]
     type = CoupledTractionBC
     variable = disp_y
     traction = tau_y
     factor = -1e4
+    # factor = 0
     boundary = 'top bottom right'
-    use_displaced_mesh = true
+    use_displaced_mesh = false #true
   []
 []
 
@@ -140,15 +138,19 @@
 [Executioner]
   type = Transient
 
-  solve_type = NEWTON
-  petsc_options_iname = '-pc_type -pc_factor_mat_solver_package'
-  petsc_options_value = 'lu       superlu_dist'
+  solve_type = newton
+  petsc_options_iname = '-pc_type'# -pc_factor_mat_solver_package'
+  petsc_options_value = 'lu       '#superlu_dist'
 
-  nl_abs_tol = 1e-6
-  nl_max_its = 30
-  l_tol = 1e-6
-  l_max_its = 300
+  nl_rel_tol = 1e-6
+  nl_abs_tol = 1e-10
   dt = 1e-5
+
+  [TimeIntegrator]
+    type = NewmarkBeta
+    beta = 0.4225
+    gamma = 0.8
+  []
   # [TimeStepper]
   #   type = PostprocessorDT
   #   postprocessor = dt
