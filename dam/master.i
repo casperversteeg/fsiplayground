@@ -29,7 +29,8 @@
     direction = from_multiapp
     multi_app = Fluid
     source_variable = sigma_x
-    variable = fluid_bc_store_x
+    # variable = fluid_bc_store_x
+    variable = sigma_x
     execute_on = 'timestep_end'
   [../]
   [./take_traction_from_fluid_y]
@@ -37,14 +38,16 @@
     direction = from_multiapp
     multi_app = Fluid
     source_variable = sigma_y
-    variable = fluid_bc_store_y
+    # variable = fluid_bc_store_y
+    variable = sigma_y
     execute_on = 'timestep_end'
   [../]
   [./send_traction_to_solid_x]
     type = MultiAppInterpolationTransfer
     direction = to_multiapp
     multi_app = Solid
-    source_variable = fluid_bc_store_x
+    # source_variable = fluid_bc_store_x
+    source_variable = sigma_x
     variable = sigma_x
     execute_on = 'timestep_end'
   [../]
@@ -52,7 +55,8 @@
     type = MultiAppInterpolationTransfer
     direction = to_multiapp
     multi_app = Solid
-    source_variable = fluid_bc_store_y
+    # source_variable = fluid_bc_store_y
+    source_variable = sigma_y
     variable = sigma_y
     execute_on = 'timestep_end'
   [../]
@@ -60,11 +64,19 @@
 
 # Auxiliary variables used for postprocessing and passing data between apps
 [AuxVariables]
-  [./fluid_bc_store_x]
+  # [./fluid_bc_store_x]
+  #   family = MONOMIAL
+  #   order = CONSTANT
+  # [../]
+  # [./fluid_bc_store_y]
+  #   family = MONOMIAL
+  #   order = CONSTANT
+  # [../]
+  [./sigma_x]
     family = MONOMIAL
     order = CONSTANT
   [../]
-  [./fluid_bc_store_y]
+  [./sigma_y]
     family = MONOMIAL
     order = CONSTANT
   [../]
