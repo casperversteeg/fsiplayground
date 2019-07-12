@@ -42,7 +42,7 @@
     multi_app = fluid
     source_variable = disp_x
     variable = disp_x
-    execute_on = 'timestep_begin'
+    execute_on = 'timestep_end'
   []
   [to_disp_y]
     type = MultiAppCopyTransfer
@@ -50,7 +50,7 @@
     multi_app = fluid
     source_variable = disp_y
     variable = disp_y
-    execute_on = 'timestep_begin'
+    execute_on = 'timestep_end'
   []
 
   [from_tau_x]
@@ -58,7 +58,7 @@
     direction = from_multiapp
     multi_app = fluid
     source_variable = tau_x
-    variable = tau_x
+    variable = tau_xq
     execute_on = 'timestep_end'
   []
   [from_tau_y]
@@ -66,7 +66,7 @@
     direction = from_multiapp
     multi_app = fluid
     source_variable = tau_y
-    variable = tau_y
+    variable = tau_yq
     execute_on = 'timestep_end'
   []
 
@@ -74,7 +74,7 @@
     type = MultiAppInterpolationTransfer
     direction = to_multiapp
     multi_app = structure
-    source_variable = tau_x
+    source_variable = tau_xq
     variable = tau_x
     execute_on = 'timestep_end'
   []
@@ -82,7 +82,7 @@
     type = MultiAppInterpolationTransfer
     direction = to_multiapp
     multi_app = structure
-    source_variable = tau_y
+    source_variable = tau_yq
     variable = tau_y
     execute_on = 'timestep_end'
   []
@@ -113,11 +113,11 @@
   [y_BC]
     order = SECOND
   []
-  [tau_x]
+  [tau_xq]
     order = CONSTANT
     family = MONOMIAL
   []
-  [tau_y]
+  [tau_yq]
     order = CONSTANT
     family = MONOMIAL
   []

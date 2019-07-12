@@ -6,10 +6,10 @@
   laplace = false
   mesh_disp_x = disp_x
   mesh_disp_y = disp_y
-  ref_vel_x = ref_vel_x
-  ref_vel_y = ref_vel_y
-  nodal_normal_x = nodal_normal_x
-  nodal_normal_y = nodal_normal_y
+  # ref_vel_x = ref_vel_x
+  # ref_vel_y = ref_vel_y
+  # nodal_normal_x = nodal_normal_x
+  # nodal_normal_y = nodal_normal_y
   gravity = '0 -9800 0'
 []
 

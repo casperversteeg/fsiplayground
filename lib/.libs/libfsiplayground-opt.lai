@@ -5,23 +5,19 @@
 # It is necessary for linking the library.
 
 # The name that we can dlopen(3).
-dlname='libfsiplayground-opt.0.dylib'
+dlname='libfsiplayground-opt.so.0'
 
 # Names of this library.
-library_names='libfsiplayground-opt.0.dylib libfsiplayground-opt.dylib'
+library_names='libfsiplayground-opt.so.0.0.0 libfsiplayground-opt.so.0 libfsiplayground-opt.so'
 
 # The name of the static archive.
 old_library=''
 
 # Linker flags that cannot go in dependency_libs.
-inherited_linker_flags='  -fopenmp'
+inherited_linker_flags=' -fopenmp'
 
 # Libraries that this one depends upon.
-<<<<<<< HEAD
-dependency_libs=' /Users/Casper/MOOSE/moose/modules/module_loader/lib/libmodule_loader_with_con_fp_hc_rdg_ns_tm_pf-opt.la /Users/Casper/MOOSE/moose/modules/phase_field/lib/libphase_field-opt.la /Users/Casper/MOOSE/moose/modules/tensor_mechanics/lib/libtensor_mechanics-opt.la /Users/Casper/MOOSE/moose/modules/navier_stokes/lib/libnavier_stokes-opt.la /Users/Casper/MOOSE/moose/modules/rdg/lib/librdg-opt.la /Users/Casper/MOOSE/moose/modules/heat_conduction/lib/libheat_conduction-opt.la /Users/Casper/MOOSE/moose/modules/fluid_properties/lib/libfluid_properties-opt.la /Users/Casper/MOOSE/moose/modules/contact/lib/libcontact-opt.la'
-=======
 dependency_libs=' /home/casperversteeg/MOOSE/moose/modules/module_loader/lib/libmodule_loader_with_con_fp_hc_rdg_ns_tm_pf-opt.la /home/casperversteeg/MOOSE/moose/modules/phase_field/lib/libphase_field-opt.la /home/casperversteeg/MOOSE/moose/modules/tensor_mechanics/lib/libtensor_mechanics-opt.la /home/casperversteeg/MOOSE/moose/modules/navier_stokes/lib/libnavier_stokes-opt.la /home/casperversteeg/MOOSE/moose/modules/rdg/lib/librdg-opt.la /home/casperversteeg/MOOSE/moose/modules/heat_conduction/lib/libheat_conduction-opt.la /home/casperversteeg/MOOSE/moose/modules/fluid_properties/lib/libfluid_properties-opt.la /home/casperversteeg/MOOSE/moose/modules/contact/lib/libcontact-opt.la /opt/moose/mpich-3.2/gcc-7.3.1/lib/libmpicxx.la /opt/moose/gcc-7.3.1/lib/../lib64/libstdc++.la /opt/moose/mpich-3.2/gcc-7.3.1/lib/libmpi.la -lrt -lpthread /opt/moose/gcc-7.3.1/lib/../lib64/libstdc++.la'
->>>>>>> 9af3f8b908c90230929fb71dc08cf1897f597e48
 
 # Names of additional weak libraries provided by this library
 weak_library_names=''
@@ -42,8 +38,4 @@ dlopen=''
 dlpreopen=''
 
 # Directory that this library needs to be installed in:
-<<<<<<< HEAD
-libdir='/Users/Casper/MOOSE/fsiplayground/lib'
-=======
 libdir='/home/casperversteeg/MOOSE/fsiplayground/lib'
->>>>>>> 9af3f8b908c90230929fb71dc08cf1897f597e48

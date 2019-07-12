@@ -410,7 +410,9 @@
  /home/casperversteeg/MOOSE/fsiplayground/src/BCs/INSOpenBC.C \
  /home/casperversteeg/MOOSE/fsiplayground/build/header_symlinks/INSOpenBC.h \
  /home/casperversteeg/MOOSE/fsiplayground/src/BCs/ScalarDirichletBC.C \
- /home/casperversteeg/MOOSE/fsiplayground/build/header_symlinks/CoupledDirichletBC.h
+ /home/casperversteeg/MOOSE/fsiplayground/build/header_symlinks/CoupledDirichletBC.h \
+ /home/casperversteeg/MOOSE/fsiplayground/src/BCs/TractionBCfromAux.C \
+ /home/casperversteeg/MOOSE/fsiplayground/build/header_symlinks/TractionBCfromAux.h
 
 /home/casperversteeg/MOOSE/fsiplayground/src/BCs/CoupledDirichletBC.C:
 
@@ -1233,3 +1235,7 @@
 /home/casperversteeg/MOOSE/fsiplayground/src/BCs/ScalarDirichletBC.C:
 
 /home/casperversteeg/MOOSE/fsiplayground/build/header_symlinks/CoupledDirichletBC.h:
+
+/home/casperversteeg/MOOSE/fsiplayground/src/BCs/TractionBCfromAux.C:
+
+/home/casperversteeg/MOOSE/fsiplayground/build/header_symlinks/TractionBCfromAux.h:
