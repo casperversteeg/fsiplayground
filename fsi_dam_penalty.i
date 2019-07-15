@@ -105,18 +105,20 @@
     variable = disp_y
     block = 'fluid'
   [../]
-  [./accel_tensor_x]
-    type = CoupledTimeDerivative
+
+  [./SolidInertia_x]
+    type = InertialForce
     variable = disp_x
-    v = vel_x_solid
+    use_displaced_mesh = true
     block = 'solid'
   [../]
-  [./accel_tensor_y]
-    type = CoupledTimeDerivative
+  [./SolidInetia_y]
+    type = InertialForce
     variable = disp_y
-    v = vel_y_solid
+    use_displaced_mesh = true
     block = 'solid'
   [../]
+
   [./vxs_time_derivative_term]
     type = CoupledTimeDerivative
     variable = vel_x_solid
@@ -251,6 +253,11 @@
 
 [Executioner]
   type = Transient
+  [./TimeIntegrator]
+    type = NewmarkBeta
+    beta = 0.25
+    gamma = 0.5
+  [../]
   dt = 1e-7
 
   nl_rel_tol = 1e-5
