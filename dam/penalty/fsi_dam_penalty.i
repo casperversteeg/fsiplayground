@@ -3,8 +3,8 @@
   integrate_p_by_parts = false
   laplace = true
   convective_term = true
-  transient_term = true
-  pspg = true
+  transient_term = false
+  pspg = false
   displacements = 'disp_x disp_y'
   order = 'SECOND'
 []
@@ -273,7 +273,7 @@
   nl_max_its = 15
   l_tol = 1e-6
   l_max_its = 300
-  end_time = 1e-1
+  end_time = 5e-3
 
   solve_type = 'PJFNK'
   petsc_options_iname = '-pc_type'
