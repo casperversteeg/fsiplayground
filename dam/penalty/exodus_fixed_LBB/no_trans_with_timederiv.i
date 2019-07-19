@@ -3,7 +3,7 @@
   integrate_p_by_parts = false
   laplace = true
   convective_term = true
-  transient_term = false
+  # transient_term = false
   pspg = false
   displacements = 'disp_x disp_y'
 []
@@ -263,6 +263,36 @@
     variable = vel_y_solid
     boundary = 'dam_left dam_top dam_right'
     value = 0.0
+  [../]
+[]
+
+[AuxVariables]
+  [./grad_p_x]
+    family = MONOMIAL
+    order = FIRST
+    block = 'fluid'
+  [../]
+  [./grad_p_y]
+    family = MONOMIAL
+    order = FIRST
+    block = 'fluid'
+  [../]
+[../]
+
+[AuxKernels]
+  [./get_grad_p_x]
+    type = DiffusionFluxAux
+    variable = grad_p_x
+    diffusivity = 1
+    diffusion_variable = p
+    component = x
+  [../]
+  [./get_grad_p_y]
+    type = DiffusionFluxAux
+    variable = grad_p_x
+    diffusivity = 1
+    diffusion_variable = p
+    component = y
   [../]
 []
 

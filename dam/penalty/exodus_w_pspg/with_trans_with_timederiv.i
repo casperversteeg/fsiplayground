@@ -1,9 +1,9 @@
 [GlobalParams]
   gravity = '0 0 0'
-  integrate_p_by_parts = false
+  integrate_p_by_parts = true
   laplace = true
   convective_term = true
-  transient_term = false
+  transient_term = true
   pspg = false
   displacements = 'disp_x disp_y'
 []
@@ -31,8 +31,6 @@
     order = FIRST
     family = LAGRANGE
   [../]
-  # Add displacement variables. Must be second order because the mesh is second
-  # order as well. It will yell at you if lower order...
   [./disp_x]
     order = SECOND
     family = LAGRANGE
@@ -52,6 +50,59 @@
     family = LAGRANGE
   [../]
 []
+
+[AuxVariables]
+  [./vel_x_aux]
+    block = 'solid'
+  [../]
+  [./accel_x]
+    block = 'solid'
+  [../]
+  [./vel_y_aux]
+    block = 'solid'
+  [../]
+  [./accel_y]
+    block = 'solid'
+  [../]
+[]
+
+[AuxKernels]
+  [./accel_x]
+    type = NewmarkAccelAux
+    variable = accel_x
+    displacement = disp_x
+    velocity = vel_x_aux
+    beta = 0.3025
+    execute_on = timestep_end
+    block = 'solid'
+  [../]
+  [./vel_x]
+    type = NewmarkVelAux
+    variable = vel_x_aux
+    acceleration = accel_x
+    gamma = 0.6
+    execute_on = timestep_end
+    block = 'solid'
+  [../]
+  [./accel_y]
+    type = NewmarkAccelAux
+    variable = accel_y
+    displacement = disp_y
+    velocity = vel_y_aux
+    beta = 0.3025
+    execute_on = timestep_end
+    block = 'solid'
+  [../]
+  [./vel_y]
+    type = NewmarkVelAux
+    variable = vel_y_aux
+    acceleration = accel_y
+    gamma = 0.6
+    execute_on = timestep_end
+    block = 'solid'
+  [../]
+[]
+
 
 [Kernels]
   [./vel_x_time]
@@ -125,12 +176,20 @@
   [./SolidInertia_x]
     type = InertialForce
     variable = disp_x
+    velocity = vel_x_aux
+    acceleration = accel_x
+    beta = 0.3025
+    gamma = 0.6
     use_displaced_mesh = true
     block = 'solid'
   [../]
   [./SolidInetia_y]
     type = InertialForce
     variable = disp_y
+    velocity = vel_y_aux
+    acceleration = accel_y
+    beta = 0.3025
+    gamma = 0.6
     use_displaced_mesh = true
     block = 'solid'
   [../]
@@ -276,11 +335,11 @@
 [Executioner]
   # type = Steady
   type = Transient
-  [./TimeIntegrator]
-    type = NewmarkBeta
-    beta = 0.25
-    gamma = 0.5
-  [../]
+  # [./TimeIntegrator]
+  #   type = NewmarkBeta
+  #   beta = 0.25
+  #   gamma = 0.5
+  # [../]
   dt = 1e-4
 
   nl_rel_tol = 1e-10
